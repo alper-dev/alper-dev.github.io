@@ -8,4 +8,4 @@ jobs:
   noop:
     runs-on: ubuntu-latest
     steps:
-      - run: "no-op - deployment handled by deploy.yml"
+      - run: echo "no-op - deployment handled by deploy.yml"
