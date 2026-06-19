@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Newsreader", "Iowan Old Style", "Palatino", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light dark;
+  --bg: #f5f0e8;
+  --fg: #15140f;
+  --fg-soft: #4a4742;
+  --fg-faint: #95918a;
+  --rule: #e3dfd6;
+  --link: #b14619;
+}
+
+.dark {
+  --bg: #0c0c0a;
+  --fg: #ededeb;
+  --fg-soft: #a8a4a0;
+  --fg-faint: #5a5650;
+  --rule: #25231f;
+  --link: #ff7a47;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { border-color: var(--rule); }
+
+::selection { background: var(--fg); color: var(--bg); }
+
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); font-feature-settings: "ss01", "ss02"; }
+
+a { color: inherit; text-decoration: none; }
+
+.link {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-thickness 0.15s ease, color 0.15s ease;
+}
+.link:hover { text-decoration-thickness: 2px; color: var(--link); }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Hero */
+.hero-wrap {
+  position: relative;
+}
+
+/* First-paint entrance */
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.appear      { animation: appear 0.8s ease both; }
+.appear-1    { animation: appear 0.8s ease both; animation-delay: 0.10s; }
+.appear-2    { animation: appear 0.8s ease both; animation-delay: 0.20s; }
+.appear-3    { animation: appear 0.8s ease both; animation-delay: 0.30s; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--fg-faint);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-soft);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-faint) transparent;
+}
+
+/* Reveal on scroll for sections below the fold */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }

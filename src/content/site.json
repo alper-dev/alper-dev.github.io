@@ -1,0 +1,28 @@
+{
+  "name": "Alper",
+  "handle": "alperdev",
+  "domain": "alperdev.codes",
+  "email": "contact@alperdev.codes",
+  "tagline": "End-to-end developer.",
+  "intro": "I build software end-to-end. I'm 18 and based in Türkiye. Most of what I make starts as something I personally wanted to exist.",
+  "now": "Learning Linux-based systems. Nothing shipped yet, heads down, building.",
+  "about": [
+    "I write across the stack: backend services, web interfaces, the small scripts in between. I've been building things with code since 2020. I care about software that feels considered: fast, quiet, and finished.",
+    "Outside of code: I go to the gym, read world classics, and I study."
+  ],
+  "labels": {
+    "selectedWork": "Work",
+    "about": "About",
+    "contact": "Elsewhere",
+    "now": "Now",
+    "themeToggle": "Toggle theme",
+    "footerNote": "© 2026 Alper. All rights reserved."
+  },
+  "socials": [
+    { "label": "github",   "href": "https://github.com/alper-dev" },
+    { "label": "email",    "href": "mailto:contact@alperdev.codes" },
+    { "label": "x",        "href": "https://x.com/real_alperdev" },
+    { "label": "discord",  "text": "@alperdev" },
+    { "label": "telegram", "href": "https://t.me/alperdev" }
+  ]
+}

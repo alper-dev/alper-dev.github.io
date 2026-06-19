@@ -1,0 +1,116 @@
+---
+import Base from "@/layouts/Base.astro";
+import Controls from "@/components/Controls";
+import site from "@/content/site.json";
+import projectsData from "@/content/projects.json";
+---
+<Base>
+
+  {/* HERO */}
+  <section class="hero-wrap">
+    <header class="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-8 flex items-center justify-between">
+      <span class="font-sans text-sm text-[var(--fg-faint)]">
+        {site.domain}
+      </span>
+      <Controls client:load />
+    </header>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-24">
+      <h1 class="appear-1 max-w-[20ch] text-[40px] md:text-[64px] lg:text-[76px] font-medium leading-[1.02] tracking-[-0.02em]">
+        {site.name},<br/>
+        <span class="italic text-[var(--fg-soft)]">shipping software.</span>
+      </h1>
+      <p class="appear-2 mt-8 max-w-[42ch] text-[var(--fg-soft)] leading-[1.65]">
+        {site.intro}
+      </p>
+    </div>
+  </section>
+
+  {/* CONTENT */}
+  <main class="max-w-[640px] mx-auto px-6 pb-32">
+
+    {/* Now */}
+    <section class="reveal py-12 border-t border-[var(--rule)]">
+      <div class="font-sans text-xs uppercase tracking-wider text-[var(--fg-faint)] mb-3">
+        {site.labels.now}
+      </div>
+      <p class="text-[var(--fg-soft)] leading-[1.65]">{site.now}</p>
+    </section>
+
+    {/* Work */}
+    <section class="reveal py-12 border-t border-[var(--rule)]">
+      <div class="font-sans text-xs uppercase tracking-wider text-[var(--fg-faint)] mb-6">
+        {site.labels.selectedWork}
+      </div>
+      <ul>
+        {projectsData.map((p: any) => {
+          const liveHref: string | undefined = p.links?.live;
+          const status: string | undefined = p.status;
+          const rowClass = "grid grid-cols-[3.5rem_1fr_auto] gap-4 items-baseline py-4 border-t border-[var(--rule)] first:border-t-0 -mx-2 px-2 transition-colors";
+          return (
+            <li>
+              {liveHref ? (
+                <a href={liveHref} target="_blank" rel="noreferrer"
+                   class={`group ${rowClass} hover:bg-[color-mix(in_srgb,var(--fg)_4%,transparent)]`}>
+                  <span class="font-mono text-sm text-[var(--fg-faint)] tabular">{p.year}</span>
+                  <div>
+                    <div class="font-medium">{p.title}</div>
+                    <div class="text-[15px] text-[var(--fg-soft)] leading-snug mt-1">{p.summary}</div>
+                  </div>
+                  <span class="font-sans text-xs text-[var(--fg-faint)] opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                </a>
+              ) : (
+                <div class={rowClass}>
+                  <span class="font-mono text-sm text-[var(--fg-faint)] tabular">{p.year}</span>
+                  <div>
+                    <div class="font-medium">{p.title}</div>
+                    <div class="text-[15px] text-[var(--fg-soft)] leading-snug mt-1">{p.summary}</div>
+                  </div>
+                  <span class="font-sans text-[11px] italic text-[var(--fg-faint)] whitespace-nowrap">{status ?? ""}</span>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    {/* About */}
+    <section class="reveal py-12 border-t border-[var(--rule)]">
+      <div class="font-sans text-xs uppercase tracking-wider text-[var(--fg-faint)] mb-4">
+        {site.labels.about}
+      </div>
+      <div class="space-y-4 text-[var(--fg-soft)] leading-[1.65]">
+        {site.about.map((para) => (
+          <p>{para}</p>
+        ))}
+      </div>
+    </section>
+
+    {/* Elsewhere */}
+    <section class="reveal py-12 border-t border-[var(--rule)]">
+      <div class="font-sans text-xs uppercase tracking-wider text-[var(--fg-faint)] mb-4">
+        {site.labels.contact}
+      </div>
+      <ul class="font-sans text-sm space-y-1.5">
+        {site.socials.map((s: any) => {
+          const display = s.text ?? s.href?.replace(/^https?:\/\/(www\.)?/, "").replace(/^mailto:/, "") ?? "";
+          return (
+            <li>
+              {s.href ? (
+                <a href={s.href} target="_blank" rel="noreferrer" class="link">{s.label}</a>
+              ) : (
+                <span class="font-medium">{s.label}</span>
+              )}
+              <span class="text-[var(--fg-faint)] ml-2">- {display}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    <footer class="pt-8 mt-8 border-t border-[var(--rule)] font-sans text-xs text-[var(--fg-faint)]">
+      <span>{site.labels.footerNote}</span>
+    </footer>
+  </main>
+</Base>

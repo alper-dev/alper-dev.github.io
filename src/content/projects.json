@@ -1,0 +1,22 @@
+[
+  {
+    "id": "minus-agent",
+    "year": "2026",
+    "title": "Minus Agent",
+    "summary": "A local, open-source alternative to Manus, an autonomous AI agent that runs entirely on your own machine.",
+    "status": "in development"
+  },
+  {
+    "id": "vesta-forums",
+    "year": "2025",
+    "title": "The Vesta Forums",
+    "summary": "A modern community forum platform, Next.js and PostgreSQL, real-time threads and discussions.",
+    "status": "in development"
+  },
+  {
+    "id": "ascention-bot",
+    "year": "2024",
+    "title": "Ascention Team Discord Bot",
+    "summary": "A multi-purpose Discord bot built for Ascention Team, a Turkish Valorant esports organisation."
+  }
+]
