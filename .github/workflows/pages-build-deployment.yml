@@ -1,0 +1,11 @@
+name: pages build and deployment
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "no-op - deployment handled by deploy.yml"
